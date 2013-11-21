@@ -1,0 +1,12 @@
+target
+/.idea
+/*.iml
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/.target
+.DS_Store
+slask
+/bin
+logs
