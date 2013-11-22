@@ -33,6 +33,10 @@
 	float: left;
 	background: #00a391;
 }
+#seqr-module1-desktop .seqr-module1-qr-code-wrapper {
+	padding: 10px;
+	background: #fff;
+}
 #seqr-module1-desktop .seqr-module1-logo {
 	float: right;
 	padding: 3px;
