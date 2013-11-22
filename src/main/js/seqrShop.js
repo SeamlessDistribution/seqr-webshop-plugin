@@ -171,7 +171,7 @@ if (!window.console) {
 
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
-        var layout = getArg('layout', 'small');
+        var layout = getArg('layout', 'standard');
         var apiURL = getArg('apiURL', 'http://extdev4.seqr.se/merchant/api');
 
         args['platform'] = platform;
