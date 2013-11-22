@@ -1,6 +1,6 @@
 /* SEQR - SMALL DESKTOP */
 
-#seqr-module2-desktop {
+#seqr-desktop {
 	width: 475px;
 	position: relative;
 	padding: 15px;
@@ -9,13 +9,13 @@
 	border: 1px solid #ccc;
 	margin: 10px;
 }
-#seqr-module2-desktop strong {
+#seqr-desktop strong {
 	font-family: "Whitney-Medium";
 	font-weight: normal;
 	font-size: 14px !important;
 	text-transform: uppercase;
 }
-#seqr-module2-desktop .seqr-module2-header {
+#seqr-desktop .seqr-header {
 	background: #f2f2f2;
 	color: #333333;
 	font-size: 25px;
@@ -26,7 +26,7 @@
 	text-transform: uppercase;
 	font-style: italic;
 }
-#seqr-module2-desktop .seqr-module2-header2 {
+#seqr-desktop .seqr-header2 {
 	background: #f2f2f2;
 	color: #333333;
 	font-size: 12px;
@@ -41,23 +41,23 @@
 	float: right;
 }
 
-#seqr-module2-desktop .seqr-module2-content {
+#seqr-desktop .seqr-content {
 	margin-left: -15px;
 }
-#seqr-module2-desktop .seqr-module2-qrcode {
+#seqr-desktop .seqr-qrcode {
 	float: left;
 	background: #00a391;
 }
-#seqr-module2-desktop .seqr-module2-qr-code-wrapper {
+#seqr-desktop .seqr-qr-code-wrapper {
 	padding: 10px;
 	background: #fff;
 }
 
-#seqr-module2-desktop .seqr-module2-logo {
+#seqr-desktop .seqr-logo {
 	float: right;
 	padding: 3px;
 }
-#seqr-module2-desktop .seqr-module2-description {
+#seqr-desktop .seqr-description {
 	width: 220px;
 	height: 146px;
 	margin-left: 15px;
@@ -67,17 +67,17 @@
 	font-size: 16px;
 	float: left;
 }
-#seqr-module2-desktop .seqr-module2-description img {
+#seqr-desktop .seqr-description img {
 	width: 100%;
 	padding: 15px 0px;
 }
-#seqr-module2-desktop .seqr-module2-label {
+#seqr-desktop .seqr-label {
 	color: #ffffff;
 	padding-top: 14px;
 	font-size: 15px;
 	text-align: center;
 }
-#seqr-module2-desktop .tagline {
+#seqr-desktop .tagline {
 	padding: 10px 0px;
 	font-size: 14px;
 	line-height: 22px;
@@ -86,25 +86,25 @@
 	font-style: italic;
 	text-align: center;
 }
-#seqr-module2-desktop .video {
+#seqr-desktop .video {
 	padding: 10px 0px;
 }
-#seqr-module2-desktop ul.seqr-module2-download {
+#seqr-desktop ul.seqr-download {
 	text-align: center;
 	margin: 0;
 	padding: 0px;
 }
-#seqr-module2-desktop ul.seqr-module2-download li {
+#seqr-desktop ul.seqr-download li {
 	text-align: center;
 	margin: 0px 10px;
 	display: inline-block;
 }
-#seqr-module2-desktop .seqr-module2-download img {
+#seqr-desktop .seqr-download img {
 	width: 20px;
 	padding: 0px 5px;
 	float: left;
 }
-#seqr-module2-desktop .seqr-module2-download a {
+#seqr-desktop .seqr-download a {
 	color: #393939;
 	display: block;
 	font-size: 12px;
@@ -112,7 +112,7 @@
 	text-decoration: none;
 	text-align: left;
 }
-#seqr-module2-desktop .seqr-module2-qrcode {
+#seqr-desktop .seqr-qrcode {
 	position: relative;
 	width: 180px;
 	height: 215px;
@@ -120,9 +120,9 @@
 	background: #00a391;
 	padding: 15px;
 }
-#seqr-module2-desktop .seqr-module2-qrcode img {
+#seqr-desktop .seqr-qrcode img {
 	width: 100%;
 }
-#seqr-module2-desktop .seqr-module2-link {
+#seqr-desktop .seqr-link {
 	display: none;
 }

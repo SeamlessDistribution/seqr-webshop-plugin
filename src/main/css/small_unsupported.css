@@ -1,6 +1,6 @@
 /* SEQR - SMALL UNSUPPORTED */
 
-#seqr-module2-unsupported {
+#seqr-unsupported {
 	max-width: 260px;
 	position: relative;
 	padding: 15px;
@@ -9,40 +9,40 @@
 	border: 1px solid #ccc;
 	margin: 10px;
 }
-#seqr-module2-unsupported a {
+#seqr-unsupported a {
 	color: #333;
 }
-#seqr-module2-unsupported .seqr-module2-unsupported-message {
+#seqr-unsupported .seqr-unsupported-message {
 	margin-left: 15px;
 	width: 260px;
 }
-#seqr-module2-unsupported .seqr-module2-unsupported-message h2 {
+#seqr-unsupported .seqr-unsupported-message h2 {
 	font-family: "Whitney-Medium";
 	font-weight: normal;
 	font-size: 19px !important;
 	text-transform: uppercase;
 	text-align: center;
 }
-#seqr-module2-unsupported .seqr-module2-unsupported-text {
+#seqr-unsupported .seqr-unsupported-text {
 	font-family: "Whitney-Book";
 	font-weight: normal;
 	font-size: 12px;
 	line-height: 17px;
 	text-align: center;
 }
-#seqr-module2-unsupported .seqr-module2-unsupported-text a {
+#seqr-unsupported .seqr-unsupported-text a {
 	display: block;
 	width: 100%;
 	padding: 20px;
 }
-#seqr-module2-unsupported strong {
+#seqr-unsupported strong {
 	font-family: "Whitney-Medium";
 	font-weight: normal;
 	font-size: 14px !important;
 	text-transform: uppercase;
 }
 
-#seqr-module2-unsupported .seqr-module2-header {
+#seqr-unsupported .seqr-header {
 	background: #f2f2f2;
 	color: #333333;
 	font-size: 12px;
@@ -53,20 +53,20 @@
 	text-transform: uppercase;
 	font-style: italic;
 }
-#seqr-module2-unsupported .seqr-module2-content {
+#seqr-unsupported .seqr-content {
 	margin-left: -15px;
 }
-#seqr-module2-unsupported .seqr-module2-qrcode {
+#seqr-unsupported .seqr-qrcode {
 	display: none;
 	float: left;
 	background: #00a391;
 }
-#seqr-module2-unsupported .seqr-module2-logo {
+#seqr-unsupported .seqr-logo {
 	float: left;
 	padding: 10px 5px;
 	margin-right: 4px;
 }
-#seqr-module2-unsupported .seqr-module2-description {
+#seqr-unsupported .seqr-description {
 	width: 230px;
 	margin-left: 15px;
 	height: 200px;
@@ -78,20 +78,20 @@
 	clear: left;
 	margin-top: 15px;
 }
-#seqr-module2-unsupported .seqr-module2-description img {
+#seqr-unsupported .seqr-description img {
 	width: 100%;
 	padding: 15px 0px;
 }
-#seqr-module2-unsupported .seqr-module2-label {
+#seqr-unsupported .seqr-label {
 	color: #ffffff;
 	padding-top: 14px;
 	font-size: 19px;
 	text-align: center;
 }
-#seqr-module2-unsupported .video {
+#seqr-unsupported .video {
 	padding: 10px 0px;
 }
-#seqr-module2-unsupported .tagline {
+#seqr-unsupported .tagline {
 	display: none;
 	padding: 10px 0px;
 	font-size: 14px;
@@ -100,22 +100,22 @@
 	font-style: italic;
 	text-align: center;
 }
-#seqr-module2-unsupported ul.seqr-module2-download {
+#seqr-unsupported ul.seqr-download {
 	text-align: center;
 	margin: 0;
 	padding: 0px;
 }
-#seqr-module2-unsupported ul.seqr-module2-download li {
+#seqr-unsupported ul.seqr-download li {
 	text-align: center;
 	margin: 0px 10px;
 	display: inline-block;
 }
-#seqr-module2-unsupported .seqr-module2-download img {
+#seqr-unsupported .seqr-download img {
 	width: 20px;
 	padding: 0px 5px;
 	float: left;
 }
-#seqr-module2-unsupported .seqr-module2-download a {
+#seqr-unsupported .seqr-download a {
 	color: #393939;
 	display: block;
 	font-size: 12px;
@@ -123,7 +123,7 @@
 	text-decoration: none;
 	text-align: left;
 }
-#seqr-module2-unsupported .seqr-module2-qrcode {
+#seqr-unsupported .seqr-qrcode {
 	position: relative;
 	width: 230px;
 	height: 275px;
@@ -131,16 +131,16 @@
 	background: #00a391;
 	padding: 15px;
 }
-#seqr-module2-unsupported .seqr-module2-qrcode img {
+#seqr-unsupported .seqr-qrcode img {
 	width: 100%;
 }
-#seqr-module2-unsupported .seqr-module2-link {
+#seqr-unsupported .seqr-link {
 	display: block;
 	float: left;
 	padding-top: 20px;
 	width: 260px;
 }
-#seqr-module2-unsupported .seqr-module2-link a {
+#seqr-unsupported .seqr-link a {
 	color: #ffffff;
 	font-size: 20px;
 	text-align: center;
