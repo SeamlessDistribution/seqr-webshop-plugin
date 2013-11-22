@@ -1,19 +1,17 @@
-<!-- SEQR - SMALL DESKTOP -->
-<div id="seqr-module2-desktop">
+<!-- SEQR - SMALL MOBILE -->
+<div id="seqr-module2-mobile">
+	<div class="seqr-module2-header">
+		<span data-translate="header">The Mobile Wallet</span>
+		<a href="https://www.seqr.com"><img src="<%= baseURL %>/images/seqr-logo.png" height="22" class="seqr-module2-logo"></a>
+	</div>
 
 	<div class="seqr-module2-content">
-		<!-- QR CODE -->		
-		<div class="seqr-module2-qrcode"> 
-			<!-- ADD SEQR QR CODE LINK -->
-			<img src="http://seqr.com/se-qr-web/qrgenerator?code=HTTP://SEQR.SE/[invoiceId]">
-			<div class="seqr-module2-label" data-translate="scan">SCAN TO PAY WITH SEQR</div>
+		<!-- LINK -->		
+		<div class="seqr-module2-link"> 
+			<!-- ADD SEQR LINK -->
+			<a href="SEQR-DEBUG://SEQR.SE/R[invoiceId]" class="seqr-module2-label" data-translate="press">PRESS TO PAY WITH SEQR</a>
 		</div>
-
-		<div class="seqr-module2-header2">
-			<img src="<%= baseURL %>/images/seqr-logo.png" height="25" class="seqr-module2-logo">
-			The Mobile Wallet
-		</div>
-
+		
 		<div class="seqr-module2-description">	
 			<ul class="seqr-module2-download">
 				<strong data-translate="download">Download the SEQR app now</strong><br>
