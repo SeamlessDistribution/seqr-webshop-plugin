@@ -1,5 +1,24 @@
 /* SEQR - SMALL UNSUPPORTED */
-
+@font-face {
+				font-family: 'Whitney-Medium';
+				src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot');
+				src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot?#iefix') format('embedded-opentype'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.woff') format('woff'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.ttf') format('truetype'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.svg#whitneymediumprogkcy') format('svg');
+				font-weight: normal;
+				font-style: normal;
+}
+@font-face {
+				font-family: 'Whitney-Book';
+				src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot');
+				src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot?#iefix') format('embedded-opentype'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.woff') format('woff'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.ttf') format('truetype'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.svg#whitneybookprogkcy') format('svg');
+				font-weight: normal;
+				font-style: normal;
+}
 #seqr-unsupported {
 	max-width: 260px;
 	position: relative;
