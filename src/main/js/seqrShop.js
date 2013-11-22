@@ -128,12 +128,26 @@ if (!window.console) {
             load(args['apiURL'] + "/invoices/" + args['invoiceId'], function (json) {
                 var data = JSON.parse(json);
                 console.log(data);
-                window.setTimeout(pollInvoiceStatus, 1000);
-            }, function(url, status) {
-                if (status == 404) {
-                    console.log(status+" loading "+url+", giving up.");
+                if (data.status == 'PAID') {
+                    if (args.hasOwnProperty('successCallback')) {
+                        var callback = getArg('successCallback');
+                        if (window.hasOwnProperty(callback)) {
+                            window[callback](data);
+                        } else {
+                            console.log(callback + ' is undefined.');
+                        }
+                    }
+                    if (args.hasOwnProperty('successURL')) {
+                        document.location = getArg('successURL');
+                    }
                 } else {
-                    console.log(status+" loading "+url+", retrying.");
+                    window.setTimeout(pollInvoiceStatus, 1000);
+                }
+            }, function (url, status) {
+                if (status == 404) {
+                    console.log(status + " loading " + url + ", giving up.");
+                } else {
+                    console.log(status + " loading " + url + ", retrying.");
                     window.setTimeout(pollInvoiceStatus, 3000);
                 }
             });
@@ -178,7 +192,7 @@ if (!window.console) {
         }
 
         load(baseURL + "/lang/" + language + ".json", injectTemplate, function error(url, status) {
-            console.log(status+" loading"+url+", reverting to 'en' language.");
+            console.log(status + " loading" + url + ", reverting to 'en' language.");
             load(baseURL + "/lang/en.json", injectTemplate);
         });
     }
