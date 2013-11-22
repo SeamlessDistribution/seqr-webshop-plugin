@@ -7,7 +7,7 @@
 
 if (!window.console) {
     window.console = {
-        log: function(msg) {
+        log: function (msg) {
         }
     };
 }
@@ -123,10 +123,22 @@ if (!window.console) {
         return obj3;
     }
 
+    function setVisibility(clazz, visible) {
+        var elems = document.getElementsByClassName(clazz);
+        for (var i = 0; i != elems.length; ++i) {
+            elems[i].style.visibility = visible ? 'visible' : 'hidden';
+        }
+    }
+
     function pollInvoiceStatus() {
         if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceId')) {
             load(args['apiURL'] + '/invoices/' + args['invoiceId'], function (json) {
                 var data = JSON.parse(json);
+                if (data.status && args['SEQR_STATUS'] != data.status) {
+                    args['SEQR_STATUS'] = data.status;
+                    setVisibility('SEQR_STATUS', false);
+                    setVisibility('SEQR_STATUS_' + data.status, true);
+                }
                 if (data.status == 'PAID') {
                     if (args.hasOwnProperty('successCallback')) {
                         var callback = getArg('successCallback');
@@ -166,6 +178,7 @@ if (!window.console) {
         args['language'] = language;
         args['layout'] = layout;
         args['apiURL'] = apiURL;
+        args['SEQR_STATUS'] = 'INIT';
 
         var injectCSS = function (template) {
             var css = renderTemplate(template, args);
