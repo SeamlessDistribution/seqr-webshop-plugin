@@ -123,6 +123,23 @@ if (!window.console) {
         return obj3;
     }
 
+    function pollInvoiceStatus() {
+        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceId')) {
+            load(args['apiURL'] + "/invoices/" + args['invoiceId'], function (json) {
+                var data = JSON.parse(json);
+                console.log(data);
+                window.setTimeout(pollInvoiceStatus, 1000);
+            }, function(url, status) {
+                if (status == 404) {
+                    console.log(status+" loading "+url+", giving up.");
+                } else {
+                    console.log(status+" loading "+url+", retrying.");
+                    window.setTimeout(pollInvoiceStatus, 3000);
+                }
+            });
+        }
+    }
+
     function initialize() {
 
         parseHashBangArgs();
@@ -130,10 +147,12 @@ if (!window.console) {
         var platform = getArg("platform", detectPlatform());
         var language = getArg("language", detectBrowserLanguage());
         var layout = getArg("layout", "small");
+        var apiURL = getArg("apiURL", "http://extdev4.seqr.se/merchant/api");
 
         args["platform"] = platform;
         args["language"] = language;
         args["layout"] = layout;
+        args["apiURL"] = apiURL;
 
         var injectCSS = function (template) {
             var css = renderTemplate(template, args);
@@ -154,6 +173,7 @@ if (!window.console) {
             load(baseURL + "/templates/" + layout + "_" + platform + ".html", function (template) {
                 var html = renderTemplate(template, merge(args, data));
                 document.getElementById('seqrShop').outerHTML = html;
+                pollInvoiceStatus();
             });
         }
 
