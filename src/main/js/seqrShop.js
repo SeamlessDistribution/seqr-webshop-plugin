@@ -7,7 +7,7 @@
 
 if (!window.console) {
     window.console = {
-        log: function () {
+        log: function(msg) {
         }
     };
 }
@@ -125,9 +125,8 @@ if (!window.console) {
 
     function pollInvoiceStatus() {
         if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceId')) {
-            load(args['apiURL'] + "/invoices/" + args['invoiceId'], function (json) {
+            load(args['apiURL'] + '/invoices/' + args['invoiceId'], function (json) {
                 var data = JSON.parse(json);
-                console.log(data);
                 if (data.status == 'PAID') {
                     if (args.hasOwnProperty('successCallback')) {
                         var callback = getArg('successCallback');
@@ -145,9 +144,9 @@ if (!window.console) {
                 }
             }, function (url, status) {
                 if (status == 404) {
-                    console.log(status + " loading " + url + ", giving up.");
+                    console.log(status + ' loading ' + url + ', giving up.');
                 } else {
-                    console.log(status + " loading " + url + ", retrying.");
+                    console.log(status + ' loading ' + url + ', retrying.');
                     window.setTimeout(pollInvoiceStatus, 3000);
                 }
             });
@@ -158,15 +157,15 @@ if (!window.console) {
 
         parseHashBangArgs();
 
-        var platform = getArg("platform", detectPlatform());
-        var language = getArg("language", detectBrowserLanguage());
-        var layout = getArg("layout", "small");
-        var apiURL = getArg("apiURL", "http://extdev4.seqr.se/merchant/api");
+        var platform = getArg('platform', detectPlatform());
+        var language = getArg('language', detectBrowserLanguage());
+        var layout = getArg('layout', 'small');
+        var apiURL = getArg('apiURL', 'http://extdev4.seqr.se/merchant/api');
 
-        args["platform"] = platform;
-        args["language"] = language;
-        args["layout"] = layout;
-        args["apiURL"] = apiURL;
+        args['platform'] = platform;
+        args['language'] = language;
+        args['layout'] = layout;
+        args['apiURL'] = apiURL;
 
         var injectCSS = function (template) {
             var css = renderTemplate(template, args);
@@ -177,23 +176,23 @@ if (!window.console) {
             } else {
                 style.innerHTML = css;
             }
-            document.getElementsByTagName("head")[0].appendChild(style);
+            document.getElementsByTagName('head')[0].appendChild(style);
         }
 
-        load(baseURL + "/css/" + layout + "_" + platform + ".css", injectCSS);
+        load(baseURL + '/css/' + layout + '_' + platform + '.css', injectCSS);
 
         var injectTemplate = function (json) {
             var data = JSON.parse(json);
-            load(baseURL + "/templates/" + layout + "_" + platform + ".html", function (template) {
+            load(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
                 var html = renderTemplate(template, merge(args, data));
                 document.getElementById('seqrShop').outerHTML = html;
                 pollInvoiceStatus();
             });
         }
 
-        load(baseURL + "/lang/" + language + ".json", injectTemplate, function error(url, status) {
-            console.log(status + " loading" + url + ", reverting to 'en' language.");
-            load(baseURL + "/lang/en.json", injectTemplate);
+        load(baseURL + '/lang/' + language + '.json', injectTemplate, function error(url, status) {
+            console.log(status + ' loading' + url + ', reverting to default language.');
+            load(baseURL + '/lang/en.json', injectTemplate);
         });
     }
 
