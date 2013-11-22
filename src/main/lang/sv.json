@@ -1,0 +1,10 @@
+{
+    "header": "DEN MOBILA PLÅNBOKEN",
+    "tagline": "SEQR är den enklaste mobila betalningslösningen. Att betala är lika enkelt online som i butik.",
+    "scan": "SKANNA FÖR ATT BETALA",
+    "press": "TRYCK FÖR ATT BETALA",
+    "download": "LADDA NER SEQR-APPEN NU",
+    "notsupporteddevice": "Tyvärr så stödjer inte SEQR-appen din smartphone. Önskar du att SEQR hade support för din mobil?",
+    "notsupporteddevicetitle" : "SEQR FINNS TILLGÄNGLIGT FÖR IPHONE OCH ANDROID.",
+    "notsupporteddevicelink" : "SKRIV TILL OSS"
+}

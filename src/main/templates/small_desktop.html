@@ -1,0 +1,33 @@
+<h1><%= header %></h1>
+        
+<h2><%= invoiceId %></h2>
+
+<h1><%= backURL %></h1>
+        
+<!-- SEQR MODULE 1 FOR DESKTOP -->
+<div id="seqr-module2-desktop">
+
+    <div class="seqr-module2-content">
+        <!-- QR CODE -->
+        <div class="seqr-module2-qrcode">
+            <!-- ADD SEQR QR CODE LINK -->
+            <img src="http://seqr.com/se-qr-web/qrgenerator?code=HTTP://SEQR.SE/[invoiceId]">
+            <div class="seqr-module2-label" data-translate="scan">SCAN TO PAY WITH SEQR</div>
+        </div>
+
+        <div class="seqr-module2-header2">
+            <img src="<%= baseURL %>/images/seqr-logo.png" height="25" class="seqr-module2-logo">
+            The Mobile Wallet
+        </div>
+
+        <div class="seqr-module2-description">
+            <ul class="seqr-module2-download">
+                <strong data-translate="download">Download the SEQR app now</strong><br>
+                <li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/iphone.png">iPhone</a></li>
+                <li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/android.png">Android</a></li>
+            </ul>
+
+            <div class="tagline" data-translate="tagline">SEQR is the most convenient mobile payment solution. Paying is as easy online as in stores.</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,432 @@
+@font-face {
+				font-family: 'Whitney-Medium';
+				src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot');
+				src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot?#iefix') format('embedded-opentype'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.woff') format('woff'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.ttf') format('truetype'),
+						 url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.svg#whitneymediumprogkcy') format('svg');
+				font-weight: normal;
+				font-style: normal;
+}
+@font-face {
+				font-family: 'Whitney-Book';
+				src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot');
+				src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot?#iefix') format('embedded-opentype'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.woff') format('woff'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.ttf') format('truetype'),
+						 url('<%= baseURL %>/fonts/book/whitneybookprogkcy.svg#whitneybookprogkcy') format('svg');
+				font-weight: normal;
+				font-style: normal;
+}
+
+body {
+	font-family: "Whitney-Book";
+	line-height: 30px;
+	background: #333333;
+}
+/* SEQR MODULE 1 FOR MOBILE */
+
+#seqr-module2-mobile {
+	display: none;
+	max-width: 260px;
+	left: 50%;
+	margin-left: -145px;
+	position: relative;
+	padding: 15px;
+	background: #fff;
+	float: left;
+}
+#seqr-module2-mobile strong {
+	font-family: "Whitney-Medium";
+	font-weight: normal;
+	font-size: 14px !important;
+	text-transform: uppercase;
+}
+#seqr-module2-mobile .seqr-module2-header {
+	background: #f2f2f2;
+	color: #333333;
+	font-size: 12px;
+	line-height: 40px;
+	font-family: "Whitney-Book";
+	padding: 7px 15px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-style: italic;
+}
+#seqr-module2-mobile .seqr-module2-content {
+	margin-left: -15px;
+}
+#seqr-module2-mobile .seqr-module2-qrcode {
+	display: none;
+	float: left;
+	background: #00a391;
+}
+#seqr-module2-mobile .seqr-module2-logo {
+	float: left;
+	padding: 10px 5px;
+	margin-right: 4px;
+}
+#seqr-module2-mobile .seqr-module2-description {
+	width: 230px;
+	margin-left: 15px;
+	position: relative;
+	padding: 0px 15px;
+	font-size: 16px;
+	float: left;
+	clear: left;
+	margin-top: 15px;
+}
+#seqr-module2-mobile .seqr-module2-description img {
+	width: 100%;
+	padding: 15px 0px;
+}
+#seqr-module2-mobile .seqr-module2-label {
+	color: #ffffff;
+	padding-top: 14px;
+	font-size: 19px;
+	text-align: center;
+}
+#seqr-module2-mobile .video {
+	padding: 10px 0px;
+}
+#seqr-module2-mobile .tagline {
+	display: none;
+	padding: 10px 0px;
+	font-size: 16px;
+	line-height: 22px;
+	float: left;
+	font-style: italic;
+	text-align: center;
+}
+#seqr-module2-mobile ul.seqr-module2-download {
+	text-align: center;
+	margin: 0;
+	padding: 0px;
+}
+#seqr-module2-mobile ul.seqr-module2-download li {
+	text-align: center;
+	margin: 0px 10px;
+	display: inline-block;
+}
+#seqr-module2-mobile .seqr-module2-download img {
+	width: 20px;
+	padding: 0px 5px;
+	float: left;
+}
+#seqr-module2-mobile .seqr-module2-download a {
+	color: #393939;
+	display: block;
+	font-size: 12px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: left;
+}
+#seqr-module2-mobile .seqr-module2-qrcode {
+	position: relative;
+	width: 230px;
+	height: 275px;
+	margin-left: 15px;
+	background: #00a391;
+	padding: 15px;
+}
+#seqr-module2-mobile .seqr-module2-qrcode img {
+	width: 100%;
+}
+#seqr-module2-mobile .seqr-module2-link {
+	display: block;
+	float: left;
+	margin-left: 15px;
+	width: 260px;
+}
+#seqr-module2-mobile .seqr-module2-link a {
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px 0px;	
+	background: #00a391;
+	border-radius: 5px;
+	display: block;
+	width: 100%;
+	text-decoration: none;
+}
+
+
+/* SEQR MODULE 1 FOR DESKTOP */
+
+#seqr-module2-desktop {
+	display: none;
+	width: 475px;
+	left: 50%;
+	margin-left: -277px;
+	position: relative;
+	padding: 15px;
+	background: #fff;
+	float: left;
+}
+#seqr-module2-desktop strong {
+	font-family: "Whitney-Medium";
+	font-weight: normal;
+	font-size: 14px !important;
+	text-transform: uppercase;
+}
+#seqr-module2-desktop .seqr-module2-header {
+	background: #f2f2f2;
+	color: #333333;
+	font-size: 25px;
+	line-height: 40px;
+	font-family: "Whitney-Book";
+	padding: 7px 15px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-style: italic;
+}
+#seqr-module2-desktop .seqr-module2-header2 {
+	background: #f2f2f2;
+	color: #333333;
+	font-size: 12px;
+	line-height: 40px;
+	font-family: "Whitney-Book";
+	padding: 7px 15px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-style: italic;
+	margin-left: 15px;
+	width: 220px;
+	float: right;
+}
+
+#seqr-module2-desktop .seqr-module2-content {
+	margin-left: -15px;
+}
+#seqr-module2-desktop .seqr-module2-qrcode {
+	float: left;
+	background: #00a391;
+}
+#seqr-module2-desktop .seqr-module2-logo {
+	float: right;
+	padding: 3px;
+}
+#seqr-module2-desktop .seqr-module2-description {
+	width: 220px;
+	margin-left: 15px;
+	position: relative;
+	background: #f2f2f2;
+	padding: 15px;
+	font-size: 16px;
+	float: left;
+}
+#seqr-module2-desktop .seqr-module2-description img {
+	width: 100%;
+	padding: 15px 0px;
+}
+#seqr-module2-desktop .seqr-module2-label {
+	color: #ffffff;
+	padding-top: 14px;
+	font-size: 15px;
+	text-align: center;
+}
+#seqr-module2-desktop .tagline {
+	padding: 10px 0px;
+	font-size: 16px;
+	line-height: 22px;
+	display: block;
+	float: left;
+	font-style: italic;
+	text-align: center;
+}
+#seqr-module2-desktop .video {
+	padding: 10px 0px;
+}
+#seqr-module2-desktop ul.seqr-module2-download {
+	text-align: center;
+	margin: 0;
+	padding: 0px;
+}
+#seqr-module2-desktop ul.seqr-module2-download li {
+	text-align: center;
+	margin: 0px 10px;
+	display: inline-block;
+}
+#seqr-module2-desktop .seqr-module2-download img {
+	width: 20px;
+	padding: 0px 5px;
+	float: left;
+}
+#seqr-module2-desktop .seqr-module2-download a {
+	color: #393939;
+	display: block;
+	font-size: 12px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: left;
+}
+#seqr-module2-desktop .seqr-module2-qrcode {
+	position: relative;
+	width: 180px;
+	height: 215px;
+	margin-left: 15px;
+	background: #00a391;
+	padding: 15px;
+}
+#seqr-module2-desktop .seqr-module2-qrcode img {
+	width: 100%;
+}
+#seqr-module2-desktop .seqr-module2-link {
+	display: none;
+}
+
+
+/* SEQR MODULE 1 FOR MOBILE */
+
+#seqr-module2-unsupported {
+	display: none;
+	max-width: 260px;
+	left: 50%;
+	margin-left: -145px;
+	position: relative;
+	padding: 15px;
+	background: #fff;
+	float: left;
+}
+#seqr-module2-unsupported a {
+	color: #333;
+}
+#seqr-module2-unsupported .seqr-module2-unsupported-message {
+	margin-left: 15px;
+	width: 260px;
+}
+#seqr-module2-unsupported .seqr-module2-unsupported-message h2 {
+	font-family: "Whitney-Medium";
+	font-weight: normal;
+	font-size: 19px !important;
+	text-transform: uppercase;
+	text-align: center;
+}
+#seqr-module2-unsupported .seqr-module2-unsupported-text {
+	font-family: "Whitney-Book";
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 17px;
+	text-align: center;
+}
+#seqr-module2-unsupported .seqr-module2-unsupported-text a {
+	display: block;
+	width: 100%;
+	padding: 20px;
+}
+#seqr-module2-unsupported strong {
+	font-family: "Whitney-Medium";
+	font-weight: normal;
+	font-size: 14px !important;
+	text-transform: uppercase;
+}
+
+#seqr-module2-unsupported .seqr-module2-header {
+	background: #f2f2f2;
+	color: #333333;
+	font-size: 12px;
+	line-height: 40px;
+	font-family: "Whitney-Book";
+	padding: 7px 15px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-style: italic;
+}
+#seqr-module2-unsupported .seqr-module2-content {
+	margin-left: -15px;
+}
+#seqr-module2-unsupported .seqr-module2-qrcode {
+	display: none;
+	float: left;
+	background: #00a391;
+}
+#seqr-module2-unsupported .seqr-module2-logo {
+	float: left;
+	padding: 10px 5px;
+	margin-right: 4px;
+}
+#seqr-module2-unsupported .seqr-module2-description {
+	width: 230px;
+	margin-left: 15px;
+	height: 200px;
+	position: relative;
+	background: #f2f2f2;
+	padding: 15px;
+	font-size: 16px;
+	float: left;
+	clear: left;
+	margin-top: 15px;
+}
+#seqr-module2-unsupported .seqr-module2-description img {
+	width: 100%;
+	padding: 15px 0px;
+}
+#seqr-module2-unsupported .seqr-module2-label {
+	color: #ffffff;
+	padding-top: 14px;
+	font-size: 19px;
+	text-align: center;
+}
+#seqr-module2-unsupported .video {
+	padding: 10px 0px;
+}
+#seqr-module2-unsupported .tagline {
+	display: none;
+	padding: 10px 0px;
+	font-size: 16px;
+	line-height: 22px;
+	float: left;
+	font-style: italic;
+	text-align: center;
+}
+#seqr-module2-unsupported ul.seqr-module2-download {
+	text-align: center;
+	margin: 0;
+	padding: 0px;
+}
+#seqr-module2-unsupported ul.seqr-module2-download li {
+	text-align: center;
+	margin: 0px 10px;
+	display: inline-block;
+}
+#seqr-module2-unsupported .seqr-module2-download img {
+	width: 20px;
+	padding: 0px 5px;
+	float: left;
+}
+#seqr-module2-unsupported .seqr-module2-download a {
+	color: #393939;
+	display: block;
+	font-size: 12px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: left;
+}
+#seqr-module2-unsupported .seqr-module2-qrcode {
+	position: relative;
+	width: 230px;
+	height: 275px;
+	margin-left: 15px;
+	background: #00a391;
+	padding: 15px;
+}
+#seqr-module2-unsupported .seqr-module2-qrcode img {
+	width: 100%;
+}
+#seqr-module2-unsupported .seqr-module2-link {
+	display: block;
+	float: left;
+	padding-top: 20px;
+	width: 260px;
+}
+#seqr-module2-unsupported .seqr-module2-link a {
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px 0px;	
+	background: #00a391;
+	border-radius: 5px;
+	display: block;
+	width: 100%;
+	text-decoration: none;
+}
