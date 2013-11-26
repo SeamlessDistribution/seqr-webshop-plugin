@@ -132,7 +132,7 @@ if (!window.console) {
 
     function pollInvoiceStatus() {
         if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceId')) {
-            load(args['apiURL'] + '/invoices/' + args['invoiceId'], function (json) {
+            load(args['apiURL'] + '/invoice.php?invoiceId=' + args['invoiceId'], function (json) {
                 var data = JSON.parse(json);
                 if (data.status && args['SEQR_STATUS'] != data.status) {
                     args['SEQR_STATUS'] = data.status;
@@ -151,8 +151,10 @@ if (!window.console) {
                     if (args.hasOwnProperty('successURL')) {
                         document.location = getArg('successURL');
                     }
+                } else if (data.status == 'ISSUED') {
+                    window.setTimeout(pollInvoiceStatus, 500);
                 } else {
-                    window.setTimeout(pollInvoiceStatus, 1000);
+                    console.log('Unexpected response, '+ data.status + ', giving up.');
                 }
             }, function (url, status) {
                 if (status == 404) {
@@ -172,7 +174,7 @@ if (!window.console) {
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
         var layout = getArg('layout', 'standard');
-        var apiURL = getArg('apiURL', 'http://extdev4.seqr.se/merchant/api');
+        var apiURL = getArg('apiURL', 'http://devapi.seqr.com/api');
 
         args['platform'] = platform;
         args['language'] = language;
