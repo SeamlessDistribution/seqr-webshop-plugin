@@ -197,8 +197,7 @@ if (!window.console) {
         var injectTemplate = function (json) {
             var data = JSON.parse(json);
             load(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
-                var html = renderTemplate(template, merge(args, data));
-                document.getElementById('seqrShop').outerHTML = html;
+                document.getElementById('seqrShop').outerHTML = renderTemplate(template, merge(args, data));
                 pollInvoiceStatus();
             });
         }
