@@ -8,5 +8,6 @@ target
 /.target
 .DS_Store
 slask
+nginx.*
 /bin
 logs
