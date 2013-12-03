@@ -174,7 +174,7 @@ if (!window.console) {
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
         var layout = getArg('layout', 'standard');
-        var apiURL = getArg('apiURL', 'http://devapi.seqr.com/api');
+        var apiURL = getArg('apiURL', 'http://devapi.seqr.com/seqr-webshop-api');
 
         args['platform'] = platform;
         args['language'] = language;
