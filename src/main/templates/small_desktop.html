@@ -2,40 +2,53 @@
 <div id="seqr-desktop">
 
 	<div class="seqr-content">
-		<!-- QR CODE -->		
+		<!-- QR CODE -->
 		<div class="seqr-qrcode"> 
 			<!-- ADD SEQR QR CODE LINK -->
-			<div class="seqr-qr-code-wrapper"><img src="https://chart.googleapis.com/chart?chs=210x210&cht=qr&chld=M|0&chl=HTTP%3A%2F%2FSEQR.SE%2FR<%= invoiceId %>"></div>
-			<div class="seqr-label" data-translate="scan">SCAN TO PAY WITH SEQR</div>
+			<div class="seqr-qr-code-wrapper"><img src="https://chart.googleapis.com/chart?chs=210x210&cht=qr&chld=M|0&chl=HTTP%3A%2F%2FSEQR.SE%2FR<%= invoiceReference %>"></div>
+			<div class="seqr-label" data-translate="scan"><%= text.scan %></div>
 		</div>
 
 		<div class="seqr-header2">
 			<img src="<%= baseURL %>/images/seqr-logo.png" height="25" class="seqr-logo">
-			The Mobile Wallet
+			<%= text.header %>
 		</div>
 
-		<div class="seqr-description">	
+		<div class="seqr-description">
 			<ul class="seqr-download">
-				<strong data-translate="download">Download the SEQR app now</strong><br>
-				<li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/iphone.png">iPhone</a></li>
-				<li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/android.png">Android</a></li>
+				<strong data-translate="download"><%= text.download %></strong><br>
+				<li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/iphone.png"><%= text.iphone %></a></li>
+				<li><a href="http://www.seqr.com/app" target="_blank"><img src="<%= baseURL %>/images/android.png"><%= text.android %></a></li>
 			</ul>
 						
-			<div class="tagline" data-translate="tagline">SEQR is the most convenient mobile payment solution. Paying is as easy online as in stores.</div>
+			<div class="tagline" data-translate="tagline"><%= text.tagline %></div>
 		</div>
 	</div>
 	
-	<!-- STATUS PAID -->		
+	<!-- STATUS PAID -->
 	<div class="SEQR_STATUS SEQR_STATUS_PAID">
 		<div class="seqr-header">
-			<span data-translate="header">The Mobile Wallet</span>
+			<span data-translate="header"><%= text.header %></span>
 			<a href="https://www.seqr.com"><img src="<%= baseURL %>/images/seqr-logo.png" height="30" class="seqr-logo"></a>
 		</div>
 
 		<img src="<%= baseURL %>/images/paymentdone.png" width="100" class="check">
 		<div class="seqr-content-paymentcomplete-message-title">
-		Payment done
+			<%= text.paid %>
 		</div>
 	</div>
-	
+
+	<!-- STATUS PAID -->
+	<div class="SEQR_STATUS SEQR_STATUS_CANCELED">
+		<div class="seqr-header">
+			<span data-translate="header"><%= text.header %></span>
+			<a href="https://www.seqr.com"><img src="<%= baseURL %>/images/seqr-logo.png" height="30" class="seqr-logo"></a>
+		</div>
+
+		<img src="<%= baseURL %>/images/paymentcanceled.png" width="100" class="check">
+		<div class="seqr-content-paymentcomplete-message-title">
+			<%= text.canceled %>
+		</div>
+	</div>
+
 </div>

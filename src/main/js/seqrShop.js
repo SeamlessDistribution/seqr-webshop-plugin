@@ -64,7 +64,7 @@ if (!window.console) {
         }
     }
 
-    function load(url, successCallback, errorCallback) {
+    function initHttpRequest(successCallback, errorCallback) {
         var xmlhttp;
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -79,14 +79,35 @@ if (!window.console) {
                 errorCallback(url, xmlhttp.status);
             }
         }
+        return xmlhttp;
+    }
+
+    function get(url, successCallback, errorCallback) {
+        var xmlhttp = initHttpRequest(successCallback, errorCallback);
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
 
-    function parseHashBangArgs() {
+    function post(url, data, successCallback, errorCallback) {
+        var json = JSON.stringify(data);
+        var xmlhttp = initHttpRequest(successCallback, errorCallback);
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type", "application/json");
+        xmlhttp.send(json);
+    }
+
+    function parseScriptArgs() {
         var scriptURL = document.getElementById("seqrShop").src;
         baseURL = scriptURL.substring(0, scriptURL.indexOf('/js/seqrShop.js'));
         args['baseURL'] = baseURL;
+        var scriptBody = document.getElementById("seqrShop").text.replace(/^\s+|\s+$/gm, '');
+        if (scriptBody != '') {
+            try {
+                args = merge(args, JSON.parse(scriptBody));
+            } catch (e) {
+                console.log(e);
+            }
+        }
         var hashes = scriptURL.slice(scriptURL.indexOf('#!') + 2).split('&');
         for (var i in hashes) {
             var tuple = hashes[i].split('=');
@@ -112,6 +133,15 @@ if (!window.console) {
         return lang.split('-')[0];
     }
 
+    function getIntArg(propertyName, defaultValue) {
+        var data = getArg(propertyName, defaultValue);
+        if (typeof data === 'number' && (data % 1) === 0) {
+            return data;
+        } else {
+            return parseInt(data);
+        }
+    }
+
     function getArg(propertyName, defaultValue) {
         return args.hasOwnProperty(propertyName) ? args[propertyName] : defaultValue;
     }
@@ -130,85 +160,133 @@ if (!window.console) {
         }
     }
 
-    function pollInvoiceStatus() {
-        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceId')) {
-            load(args['apiURL'] + '/invoice.php?invoiceId=' + args['invoiceId'], function (json) {
-                var data = JSON.parse(json);
-                if (data.status && args['SEQR_STATUS'] != data.status) {
-                    args['SEQR_STATUS'] = data.status;
-                    setVisibility('SEQR_STATUS', false);
-                    setVisibility('SEQR_STATUS_' + data.status, true);
-                }
-                if (data.status == 'PAID') {
-                    if (args.hasOwnProperty('successCallback')) {
-                        var callback = getArg('successCallback');
-                        if (window.hasOwnProperty(callback)) {
-                            window[callback](data);
-                        } else {
-                            console.log(callback + ' is undefined.');
-                        }
-                    }
-                    if (args.hasOwnProperty('successURL')) {
-                        document.location = getArg('successURL');
-                    }
-                } else if (data.status == 'ISSUED') {
-                    window.setTimeout(pollInvoiceStatus, 500);
+    function callDocumentCallback(callbackName, data) {
+        if (args.hasOwnProperty(callbackName)) {
+            var callback = getArg(callbackName);
+            if (window.hasOwnProperty(callback)) {
+                window[callback](data);
+            } else {
+                console.log(callbackName + ' is undefined.');
+            }
+        }
+    }
+
+    function updateStatus(data) {
+        if (data.status && args['SEQR_STATUS'] != data.status) {
+            callDocumentCallback(data.status.toLowerCase() + 'Callback', data);
+            args['SEQR_STATUS'] = data.status;
+            setVisibility('SEQR_STATUS', false);
+            setVisibility('SEQR_STATUS_' + data.status.toUpperCase(), true);
+        }
+    }
+
+    function checkInvoiceStatus() {
+        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceReference')) {
+            get(args['apiURL'] + '/getPaymentStatus.php?invoiceReference=' + args['invoiceReference'], function (json) {
+                updateStatus(JSON.parse(json));
+            }, function (url, status) {
+                if (status == 404) {
+                    console.log(status + ' loading ' + url + ', giving up.');
                 } else {
-                    console.log('Unexpected response, '+ data.status + ', giving up.');
+                    console.log(status + ' loading ' + url + ', retrying.');
+                    window.setTimeout(checkInvoiceStatus, getArg('pollFreq'));
+                }
+            });
+        }
+    }
+
+    function pollInvoiceStatus() {
+        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceReference')) {
+            get(args['apiURL'] + '/getPaymentStatus.php?invoiceReference=' + args['invoiceReference'], function (json) {
+                var data = JSON.parse(json);
+                updateStatus(data);
+                if (data.status == 'ISSUED') {
+                    window.setTimeout(pollInvoiceStatus, getArg('pollFreq'));
                 }
             }, function (url, status) {
                 if (status == 404) {
                     console.log(status + ' loading ' + url + ', giving up.');
                 } else {
                     console.log(status + ' loading ' + url + ', retrying.');
-                    window.setTimeout(pollInvoiceStatus, 3000);
+                    window.setTimeout(pollInvoiceStatus, getArg('pollFreq'));
                 }
             });
         }
     }
 
+    function sendInvoice(invoice, successCallback, errorCallback) {
+        invoice['notificationUrl'] = args['apiURL'] + '/getPaymentStatus.php';
+        post(args['apiURL'] + '/sendInvoice.php', invoice, function (json) {
+            var data = JSON.parse(json);
+            if (data.resultCode == 0 && successCallback) {
+                successCallback(invoice, data);
+            } else if (errorCallback) {
+                errorCallback(invoice, data);
+            }
+        }, function (url, status) {
+            console.log(status + ' loading ' + url);
+        });
+    }
+
     function initialize() {
 
-        parseHashBangArgs();
+        parseScriptArgs();
 
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
         var layout = getArg('layout', 'standard');
-        var apiURL = getArg('apiURL', 'http://devapi.seqr.com/seqr-webshop-api');
 
         args['platform'] = platform;
         args['language'] = language;
         args['layout'] = layout;
-        args['apiURL'] = apiURL;
+        args['pollFreq'] = getIntArg('pollFreq', 500);
+        args['apiURL'] = getArg('apiURL', 'http://devapi.seqr.com/seqr-webshop-api');
         args['SEQR_STATUS'] = 'INIT';
 
-        var injectCSS = function (template) {
-            var css = renderTemplate(template, args);
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            if (style.styleSheet) {
-                style.styleSheet.cssText = css;
-            } else {
-                style.innerHTML = css;
-            }
-            document.getElementsByTagName('head')[0].appendChild(style);
-        }
+        if (args.hasOwnProperty('invoiceReference') || args.hasOwnProperty('invoice')) {
 
-        load(baseURL + '/css/' + layout + '_' + platform + '.css', injectCSS);
+            var injectCSS = function (template) {
+                var css = renderTemplate(template, args);
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                if (style.styleSheet) {
+                    style.styleSheet.cssText = css;
+                } else {
+                    style.innerHTML = css;
+                }
+                document.getElementsByTagName('head')[0].appendChild(style);
+            };
 
-        var injectTemplate = function (json) {
-            var data = JSON.parse(json);
-            load(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
-                document.getElementById('seqrShop').outerHTML = renderTemplate(template, merge(args, data));
-                pollInvoiceStatus();
+            get(baseURL + '/css/' + layout + '_' + platform + '.css', injectCSS);
+
+            var injectTemplate = function (json) {
+                args['text'] = JSON.parse(json);
+                if (args.hasOwnProperty('invoiceReference')) {
+                    get(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
+                        document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
+                        pollInvoiceStatus();
+                    });
+                } else {
+                    sendInvoice(args.invoice, function (invoice, result) {
+                        args['invoiceReference'] = result.invoiceReference;
+                        get(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
+                            document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
+                            pollInvoiceStatus();
+                        });
+                    });
+                }
+            };
+
+            get(baseURL + '/lang/' + language + '.json', injectTemplate, function error(url, status) {
+                console.log(status + ' loading' + url + ', reverting to default language.');
+                get(baseURL + '/lang/en.json', injectTemplate);
             });
+
         }
 
-        load(baseURL + '/lang/' + language + '.json', injectTemplate, function error(url, status) {
-            console.log(status + ' loading' + url + ', reverting to default language.');
-            load(baseURL + '/lang/en.json', injectTemplate);
-        });
     }
+
+    window.onfocus = checkInvoiceStatus;
 
     initialize();
 

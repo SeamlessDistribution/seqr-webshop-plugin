@@ -149,7 +149,7 @@
 
 /* STATUS PAID */
 
-#seqr-desktop .SEQR_STATUS_PAID {
+#seqr-desktop .SEQR_STATUS {
 	height: 245px;
 	width: 475px;
 	background: #ffffff;
@@ -158,7 +158,7 @@
 	text-align: center;
 	visibility: hidden;
 }
-#seqr-desktop .SEQR_STATUS_PAID img.check {
+#seqr-desktop .SEQR_STATUS img.check {
 	padding: 10px 0px;
 }
 #seqr-desktop .seqr-content-paymentcomplete-message-title {

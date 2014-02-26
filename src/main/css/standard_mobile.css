@@ -53,6 +53,27 @@
 	float: left;
 	background: #00a391;
 }
+
+#seqr-mobile .SEQR_STATUS {
+	height: 305px;
+	width: 260px;
+	background: #ffffff;
+	position: absolute;
+	bottom: 15px;
+	text-align: center;
+	visibility: hidden;
+}
+#seqr-mobile .SEQR_STATUS img {
+	padding: 30px 0px;
+}
+
+#seqr-mobile .seqr-content-paymentcomplete-message-title {
+	font-size: 35px;
+	font-family: "Whitney-Book";
+	text-transform: uppercase;
+	color: #00a391;
+}
+
 #seqr-mobile .seqr-logo {
 	float: left;
 	padding: 10px 5px;

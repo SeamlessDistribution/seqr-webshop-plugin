@@ -141,3 +141,24 @@
 	width: 100%;
 	text-decoration: none;
 }
+
+/* STATUS PAID */
+
+#seqr-mobile .SEQR_STATUS {
+    height: 180px;
+    width: 265px;
+    background: #ffffff;
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+    visibility: hidden;
+}
+#seqr-mobile .SEQR_STATUS img.check {
+    padding: 10px 0px;
+}
+#seqr-mobile .seqr-content-paymentcomplete-message-title {
+    font-size: 30px;
+    font-family: "Whitney-Book";
+    text-transform: uppercase;
+    color: #00a391;
+}
