@@ -240,7 +240,7 @@ if (!window.console) {
         args['language'] = language;
         args['layout'] = layout;
         args['pollFreq'] = getIntArg('pollFreq', 500);
-        args['apiURL'] = getArg('apiURL', 'http://devapi.seqr.com/seqr-webshop-api');
+        args['apiURL'] = getArg('apiURL', 'https://devapi.seqr.com/seqr-webshop-api');
         args['SEQR_STATUS'] = 'INIT';
 
         if (args.hasOwnProperty('invoiceReference') || args.hasOwnProperty('invoice')) {
