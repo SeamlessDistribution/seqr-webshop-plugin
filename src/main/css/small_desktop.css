@@ -20,7 +20,7 @@
 				font-style: normal;
 }
 #seqr-desktop {
-	width: 475px;
+	width: 260px;
 	position: relative;
 	padding: 15px;
 	background: #fff;
@@ -65,7 +65,6 @@
 	margin-left: -15px;
 }
 #seqr-desktop .seqr-qrcode {
-	float: left;
 	background: #00a391;
 }
 #seqr-desktop .seqr-qr-code-wrapper {
@@ -74,8 +73,6 @@
 }
 
 #seqr-desktop .seqr-logo {
-	float: right;
-	padding: 3px;
 }
 #seqr-desktop .seqr-description {
 	width: 220px;

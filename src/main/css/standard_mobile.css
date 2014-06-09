@@ -76,8 +76,7 @@
 
 #seqr-mobile .seqr-logo {
 	float: left;
-	padding: 10px 5px;
-	margin-right: 4px;
+	padding-bottom: 10px;
 }
 #seqr-mobile .seqr-description {
 	width: 230px;
@@ -90,10 +89,6 @@
 	float: left;
 	clear: left;
 	margin-top: 15px;
-}
-#seqr-mobile .seqr-description img {
-	width: 100%;
-	padding: 15px 0px;
 }
 #seqr-mobile .seqr-label {
 	color: #ffffff;
@@ -114,27 +109,24 @@
 	text-align: center;
 }
 #seqr-mobile ul.seqr-download {
-	text-align: center;
-	margin: 0;
-	padding: 0px;
+    text-align: center;
+    margin: 0;
+    padding: 0px;
 }
 #seqr-mobile ul.seqr-download li {
-	text-align: center;
-	margin: 0px 10px;
-	display: inline-block;
+    text-align: center;
+    margin: 0px 10px;
+    display: inline-block;
 }
 #seqr-mobile .seqr-download img {
-	width: 20px;
-	padding: 0px 5px;
-	float: left;
+    margin: 5px 0px;
+    width: 20px;
 }
 #seqr-mobile .seqr-download a {
-	color: #393939;
-	display: block;
-	font-size: 12px;
-	line-height: 30px;
-	text-decoration: none;
-	text-align: left;
+    color: #393939;
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
 }
 #seqr-mobile .seqr-qrcode {
 	position: relative;

@@ -1,14 +1,11 @@
 {
-    "header": "THE MOBILE WALLET",
-    "tagline": "SEQR is the most convenient mobile payment solution. Paying is as easy online as in stores.",
     "scan": "SCAN TO PAY WITH SEQR",
     "paid": "PAYMENT DONE",
     "canceled": "PAYMENT CANCELED",
     "press": "PRESS TO PAY WITH SEQR",
-    "download": "Download the SEQR app now",
     "iphone": "iPhone",
     "android": "Android",
-    "notsupporteddevice": "We are sorry, but SEQR doesn't support the device you want to pay with. Do you wish for the SEQR app to have support for your phone?",
-    "notsupporteddevicetitle" : "SEQR IS AVAILABLE FOR IPHONE AND ANDROID.",
-    "notsupporteddevicelink" : "TELL US"
+    "windows": "Windows",
+    "notsupporteddevice": "We are sorry, but SEQR doesn't support the device you want to pay with.",
+    "notsupporteddevicetitle" : "SEQR IS AVAILABLE FOR IPHONE, ANDROID, AND WINDOWS PHONE."
 }

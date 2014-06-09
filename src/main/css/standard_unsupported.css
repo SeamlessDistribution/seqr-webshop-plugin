@@ -31,10 +31,6 @@
 #seqr-unsupported a {
 	color: #333;
 }
-#seqr-unsupported .seqr-unsupported-message {
-	margin-left: 15px;
-	width: 260px;
-}
 #seqr-unsupported .seqr-unsupported-message h2 {
 	font-family: "Whitney-Medium";
 	font-weight: normal;
@@ -72,9 +68,6 @@
 	text-transform: uppercase;
 	font-style: italic;
 }
-#seqr-unsupported .seqr-content {
-	margin-left: -15px;
-}
 #seqr-unsupported .seqr-qrcode {
 	display: none;
 	float: left;
@@ -82,8 +75,7 @@
 }
 #seqr-unsupported .seqr-logo {
 	float: left;
-	padding: 10px 5px;
-	margin-right: 4px;
+	padding-bottom: 10px;
 }
 #seqr-unsupported .seqr-description {
 	width: 230px;
@@ -120,27 +112,24 @@
 	text-align: center;
 }
 #seqr-unsupported ul.seqr-download {
-	text-align: center;
-	margin: 0;
-	padding: 0px;
+    text-align: center;
+    margin: 0;
+    padding: 0px;
 }
 #seqr-unsupported ul.seqr-download li {
-	text-align: center;
-	margin: 0px 10px;
-	display: inline-block;
+    text-align: center;
+    margin: 0px 10px;
+    display: inline-block;
 }
 #seqr-unsupported .seqr-download img {
-	width: 20px;
-	padding: 0px 5px;
-	float: left;
+    margin: 5px 0px;
+    width: 20px;
 }
 #seqr-unsupported .seqr-download a {
-	color: #393939;
-	display: block;
-	font-size: 12px;
-	line-height: 30px;
-	text-decoration: none;
-	text-align: left;
+    color: #393939;
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
 }
 #seqr-unsupported .seqr-qrcode {
 	position: relative;

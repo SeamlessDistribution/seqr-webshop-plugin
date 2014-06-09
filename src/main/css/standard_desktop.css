@@ -74,10 +74,6 @@
 	text-transform: uppercase;
 	color: #00a391;
 }
-#seqr-desktop .seqr-logo {
-	float: right;
-	padding: 3px;
-}
 #seqr-desktop .seqr-description {
 	width: 220px;
 	margin-left: 15px;
@@ -87,10 +83,6 @@
 	padding: 15px;
 	font-size: 16px;
 	float: left;
-}
-#seqr-desktop .seqr-description img {
-	width: 100%;
-	padding: 15px 0px;
 }
 #seqr-desktop .seqr-label {
 	color: #ffffff;
@@ -121,17 +113,14 @@
 	display: inline-block;
 }
 #seqr-desktop .seqr-download img {
+    margin: 5px 0px;
 	width: 20px;
-	padding: 0px 5px;
-	float: left;
 }
 #seqr-desktop .seqr-download a {
 	color: #393939;
 	display: block;
 	font-size: 12px;
-	line-height: 30px;
 	text-decoration: none;
-	text-align: left;
 }
 #seqr-desktop .seqr-qrcode {
 	position: relative;

@@ -39,15 +39,15 @@ if (!window.console) {
     function compileTemplate(str) {
         var strFunc =
             "var p=[],print=function(){p.push.apply(p,arguments);};" +
-                "with(obj){p.push('" +
-                str.replace(/[\r\t\n]/g, " ")
-                    .replace(/'(?=[^%]*%>)/g, "\t")
-                    .split("'").join("\\'")
-                    .split("\t").join("'")
-                    .replace(/<%=(.+?)%>/g, "',$1,'")
-                    .split("<%").join("');")
-                    .split("%>").join("p.push('")
-                + "');}return p.join('');";
+            "with(obj){p.push('" +
+            str.replace(/[\r\t\n]/g, " ")
+                .replace(/'(?=[^%]*%>)/g, "\t")
+                .split("'").join("\\'")
+                .split("\t").join("'")
+                .replace(/<%=(.+?)%>/g, "',$1,'")
+                .split("<%").join("');")
+                .split("%>").join("p.push('")
+            + "');}return p.join('');";
         return new Function("obj", strFunc);
     }
 
@@ -118,9 +118,9 @@ if (!window.console) {
     }
 
     function detectPlatform() {
-        if (isMobile.Android() || isMobile.iOS()) {
+        if (isMobile.Android() || isMobile.iOS() || isMobile.Windows()) {
             return 'mobile';
-        } else if (isMobile.BlackBerry() || isMobile.Opera() || isMobile.Windows()) {
+        } else if (isMobile.BlackBerry() || isMobile.Opera()) {
             return 'unsupported';
         } else {
             return 'desktop';
