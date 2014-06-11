@@ -1,0 +1,49 @@
+<div id ="seqr-container" class="seqr-<%= platform %>">
+
+    <img class="seqr-logo" src="<%= baseURL %>/images/seqr-logo.svg" width="220">
+
+    <div class="seqr-qrcode">
+        <div class="seqr-images">
+            <img class="seqr-base-img" src="https://chart.googleapis.com/chart?chs=220x220&cht=qr&chld=L|0&chl=HTTP%3A%2F%2FSEQR.SE%2FR<%= invoiceReference %>&choe=UTF-8" width="220" height="220">
+            <img class="seqr-overlay-img seqr-overlay-canceled" src="<%= baseURL %>/images/canceled.svg" width="110" />
+            <img class="seqr-overlay-img seqr-overlay-paid"src="<%= baseURL %>/images/paid.svg" width="110" />
+        </div>
+        <p>
+            <span class="seqr-text-scan"><%= text.scan %></span>
+            <span class="seqr-text-canceled"><%= text.canceled %></span>
+            <span class="seqr-text-paid"><%= text.paid %></span>
+        </p>
+    </div>
+
+    <div class="seqr-link">
+        <a class="seqr-text-press" href="SEQR-DEMO://SEQR.SE/R<%= invoiceReference %>"><%= text.press %></a>
+        <span class="seqr-text-canceled"><%= text.canceled %></span>
+        <span class="seqr-text-paid"><%= text.paid %></span>
+    </div>
+
+    <div class="seqr-notsupported"><%= text.unsupported %></div>
+
+    <iframe class="seqr-video" width="220px" height="122px"
+            src="http://www.youtube.com/embed/GST4ofKoEM4?rel=0&showinfo=0&theme=light&modestbranding=1&vq=hd720&controls=0"
+            frameborder="0"></iframe>
+
+    <ul class="seqr-download">
+        <li>
+            <a href="https://itunes.apple.com/app/seqr/id494224742?l=sv&mt=8" target="_blank">
+                <img src="<%= baseURL %>/images/iphone.svg"><br><%= text.iphone %>
+            </a>
+        </li>
+        <li>
+            <a href="https://play.google.com/store/apps/details?id=com.seamless.seqr" target="_blank">
+                <img src="<%= baseURL %>/images/android.svg"><br/><%= text.android %>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.windowsphone.com/sv-se/store/app/seqr/7c25ac1c-dfb7-4cd5-b040-fdeef6ab09a8" target="_blank">
+                <img src="<%= baseURL %>/images/windows.svg"><br/><%= text.windows %>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
