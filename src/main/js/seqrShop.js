@@ -1,8 +1,8 @@
 /**
- * SEQR Webshop Injector
- * User: erik.hedenstrom@seamless.e
- * Date: 2013-11-21
- * Time: 21:43
+ * SEQR Plugin Injector
+ * User: erik.hedenstrom@seamless.se
+ * Date: 2014-06-10
+ * Time: 16:11
  */
 
 if (!window.console) {
@@ -17,6 +17,7 @@ if (!window.console) {
     var baseURL = "";
     var args = {};
     var cache = {};
+    var intervalID;
 
     var isMobile = {
         Android: function () {
@@ -88,14 +89,6 @@ if (!window.console) {
         xmlhttp.send();
     }
 
-    function post(url, data, successCallback, errorCallback) {
-        var json = JSON.stringify(data);
-        var xmlhttp = initHttpRequest(successCallback, errorCallback);
-        xmlhttp.open("POST", url, true);
-        xmlhttp.setRequestHeader("Content-type", "application/json");
-        xmlhttp.send(json);
-    }
-
     function parseScriptArgs() {
         var scriptURL = document.getElementById("seqrShop").src;
         baseURL = scriptURL.substring(0, scriptURL.indexOf('/js/seqrShop.js'));
@@ -112,7 +105,7 @@ if (!window.console) {
         for (var i in hashes) {
             var tuple = hashes[i].split('=');
             if (tuple.length == 2) {
-                args[tuple[0]] = tuple[1];
+                args[tuple[0]] = decodeURIComponent(tuple[1]);
             }
         }
     }
@@ -153,16 +146,9 @@ if (!window.console) {
         return obj3;
     }
 
-    function setVisibility(clazz, visible) {
-        var elems = document.getElementsByClassName(clazz);
-        for (var i = 0; i != elems.length; ++i) {
-            elems[i].style.visibility = visible ? 'visible' : 'hidden';
-        }
-    }
-
-    function callDocumentCallback(callbackName, data) {
-        if (args.hasOwnProperty(callbackName)) {
-            var callback = getArg(callbackName);
+    function callDocumentCallback(data) {
+        if (args.hasOwnProperty('statusCallback')) {
+            var callback = getArg('statusCallback');
             if (window.hasOwnProperty(callback)) {
                 window[callback](data);
             } else {
@@ -173,59 +159,29 @@ if (!window.console) {
 
     function updateStatus(data) {
         if (data.status && args['SEQR_STATUS'] != data.status) {
-            callDocumentCallback(data.status.toLowerCase() + 'Callback', data);
+            document.getElementById("seqr-container").classList.add('seqr-status-' + data.status.toLowerCase());
             args['SEQR_STATUS'] = data.status;
-            setVisibility('SEQR_STATUS', false);
-            setVisibility('SEQR_STATUS_' + data.status.toUpperCase(), true);
-        }
-    }
-
-    function checkInvoiceStatus() {
-        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceReference')) {
-            get(args['apiURL'] + '/getPaymentStatus.php?invoiceReference=' + args['invoiceReference'], function (json) {
-                updateStatus(JSON.parse(json));
-            }, function (url, status) {
-                if (status == 404) {
-                    console.log(status + ' loading ' + url + ', giving up.');
-                } else {
-                    console.log(status + ' loading ' + url + ', retrying.');
-                    window.setTimeout(checkInvoiceStatus, getArg('pollFreq'));
-                }
-            });
+            callDocumentCallback(data);
         }
     }
 
     function pollInvoiceStatus() {
-        if (args.hasOwnProperty('apiURL') && args.hasOwnProperty('invoiceReference')) {
-            get(args['apiURL'] + '/getPaymentStatus.php?invoiceReference=' + args['invoiceReference'], function (json) {
+        if (args.hasOwnProperty('statusURL')) {
+            get(args['statusURL'], function (json) {
                 var data = JSON.parse(json);
                 updateStatus(data);
-                if (data.status == 'ISSUED') {
-                    window.setTimeout(pollInvoiceStatus, getArg('pollFreq'));
+                if (data.status != 'ISSUED') {
+                    window.clearInterval(intervalID);
                 }
             }, function (url, status) {
                 if (status == 404) {
                     console.log(status + ' loading ' + url + ', giving up.');
+                    window.clearInterval(intervalID);
                 } else {
                     console.log(status + ' loading ' + url + ', retrying.');
-                    window.setTimeout(pollInvoiceStatus, getArg('pollFreq'));
                 }
             });
         }
-    }
-
-    function sendInvoice(invoice, successCallback, errorCallback) {
-        invoice['notificationUrl'] = args['apiURL'] + '/getPaymentStatus.php';
-        post(args['apiURL'] + '/sendInvoice.php', invoice, function (json) {
-            var data = JSON.parse(json);
-            if (data.resultCode == 0 && successCallback) {
-                successCallback(invoice, data);
-            } else if (errorCallback) {
-                errorCallback(invoice, data);
-            }
-        }, function (url, status) {
-            console.log(status + ' loading ' + url);
-        });
     }
 
     function initialize() {
@@ -234,16 +190,13 @@ if (!window.console) {
 
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
-        var layout = getArg('layout', 'standard');
 
         args['platform'] = platform;
         args['language'] = language;
-        args['layout'] = layout;
         args['pollFreq'] = getIntArg('pollFreq', 500);
-        args['apiURL'] = getArg('apiURL', 'https://devapi.seqr.com/seqr-webshop-api');
         args['SEQR_STATUS'] = 'INIT';
 
-        if (args.hasOwnProperty('invoiceReference') || args.hasOwnProperty('invoice')) {
+        if (args.hasOwnProperty('invoiceReference')) {
 
             var injectCSS = function (template) {
                 var css = renderTemplate(template, args);
@@ -257,22 +210,16 @@ if (!window.console) {
                 document.getElementsByTagName('head')[0].appendChild(style);
             };
 
-            get(baseURL + '/css/' + layout + '_' + platform + '.css', injectCSS);
+            if (getArg('injectCSS', 'true') == 'true') {
+                get(baseURL + '/css/seqrShop.css', injectCSS);
+            }
 
             var injectTemplate = function (json) {
                 args['text'] = JSON.parse(json);
                 if (args.hasOwnProperty('invoiceReference')) {
-                    get(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
+                    get(baseURL + '/templates/seqrShop.html', function (template) {
                         document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
-                        pollInvoiceStatus();
-                    });
-                } else {
-                    sendInvoice(args.invoice, function (invoice, result) {
-                        args['invoiceReference'] = result.invoiceReference;
-                        get(baseURL + '/templates/' + layout + '_' + platform + '.html', function (template) {
-                            document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
-                            pollInvoiceStatus();
-                        });
+                        intervalID = window.setInterval(pollInvoiceStatus, getArg('pollFreq'));
                     });
                 }
             };
@@ -285,8 +232,6 @@ if (!window.console) {
         }
 
     }
-
-    window.onfocus = checkInvoiceStatus;
 
     initialize();
 

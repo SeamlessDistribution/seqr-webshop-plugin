@@ -1,11 +1,10 @@
 {
     "scan": "SKANNA FÖR ATT BETALA",
+    "press": "TRYCK FÖR ATT BETALA",
     "paid": "BETALNING GENOMFÖRD",
     "canceled": "BETALNING AVBRUTEN",
-    "press": "TRYCK FÖR ATT BETALA",
     "iphone": "iPhone",
     "android": "Android",
-    "windows": "Windows Phone",
-    "notsupporteddevice": "Tyvärr så stödjer inte SEQR-appen din smartphone.",
-    "notsupporteddevicetitle": "SEQR FINNS TILLGÄNGLIGT FÖR IPHONE OCH ANDROID."
+    "windows": "Windows",
+    "unsupported": "Tyvärr så stödjer inte SEQR-appen din smartphone."
 }

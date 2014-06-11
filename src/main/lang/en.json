@@ -1,11 +1,10 @@
 {
-    "scan": "SCAN TO PAY WITH SEQR",
+    "scan": "SCAN TO PAY",
+    "press": "PRESS TO PAY",
     "paid": "PAYMENT DONE",
     "canceled": "PAYMENT CANCELED",
-    "press": "PRESS TO PAY WITH SEQR",
     "iphone": "iPhone",
     "android": "Android",
     "windows": "Windows",
-    "notsupporteddevice": "We are sorry, but SEQR doesn't support the device you want to pay with.",
-    "notsupporteddevicetitle" : "SEQR IS AVAILABLE FOR IPHONE, ANDROID, AND WINDOWS PHONE."
+    "unsupported": "We are sorry, but SEQR doesn't support the device you want to pay with."
 }
