@@ -113,7 +113,7 @@ Here is complete example of the script tag with parameters properly URI encoded:
 
 ```html
 <script
-    src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#
+    src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#!
     mode=demo&
     injectCSS=true&
     statusCallback=statusUpdated&
