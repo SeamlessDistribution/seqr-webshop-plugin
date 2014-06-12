@@ -95,7 +95,7 @@ Using the SOAP response from the send invoice call the following script tag shou
 
 ```html
 <script
-    src="//cdn.seqr.com/webshop-plugin/js/seqrShop.js#![PARAMETERS]">
+    src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#![PARAMETERS]">
 <script/>
 ```
 
