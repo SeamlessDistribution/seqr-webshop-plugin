@@ -96,7 +96,7 @@ Using the SOAP response from the send invoice call the following script tag shou
 ```html
 <script
     src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#![PARAMETERS]">
-<script/>
+</script>
 ```
 
 ### Parameters
@@ -119,7 +119,7 @@ Here is complete example of the script tag with parameters properly URI encoded:
     statusCallback=statusUpdated&
     invoiceQRCode=HTTP%3A%2F%2FSEQR.SE%2FR1402562843463&
     statusURL=%2F%2Fseqr.ngrok.com%2Fseqr-webshop-api%2FgetPaymentStatus.php%3FinvoiceReference%3D1402562843463">
-<script/>
+</script>
 ```
 
 ## Examples
