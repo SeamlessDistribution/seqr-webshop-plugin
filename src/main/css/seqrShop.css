@@ -1,21 +1,21 @@
 @font-face {
-  font-family: 'Whitney-Medium';
-  src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot');
-  src: url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.eot?#iefix') format('embedded-opentype'), url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.woff') format('woff'), url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.ttf') format('truetype'), url('<%= baseURL %>/fonts/medium/whitneymediumprogkcy.svg#whitneymediumprogkcy') format('svg');
+  font-family: 'SEQR-Medium';
+  src: url('//cdn.seqr.com/webshop-plugin/fonts/medium/whitneymediumprogkcy.eot');
+  src: url('//cdn.seqr.com/webshop-plugin/fonts/medium/whitneymediumprogkcy.eot?#iefix') format('embedded-opentype'), url('//cdn.seqr.com/webshop-plugin/fonts/medium/whitneymediumprogkcy.woff') format('woff'), url('//cdn.seqr.com/webshop-plugin/fonts/medium/whitneymediumprogkcy.ttf') format('truetype'), url('//cdn.seqr.com/webshop-plugin/fonts/medium/whitneymediumprogkcy.svg#whitneymediumprogkcy') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Whitney-Book';
-  src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot');
-  src: url('<%= baseURL %>/fonts/book/whitneybookprogkcy.eot?#iefix') format('embedded-opentype'), url('<%= baseURL %>/fonts/book/whitneybookprogkcy.woff') format('woff'), url('<%= baseURL %>/fonts/book/whitneybookprogkcy.ttf') format('truetype'), url('<%= baseURL %>/fonts/book/whitneybookprogkcy.svg#whitneybookprogkcy') format('svg');
+  font-family: 'SEQR';
+  src: url('//cdn.seqr.com/webshop-plugin/fonts/book/whitneybookprogkcy.eot');
+  src: url('//cdn.seqr.com/webshop-plugin/fonts/book/whitneybookprogkcy.eot?#iefix') format('embedded-opentype'), url('//cdn.seqr.com/webshop-plugin/fonts/book/whitneybookprogkcy.woff') format('woff'), url('//cdn.seqr.com/webshop-plugin/fonts/book/whitneybookprogkcy.ttf') format('truetype'), url('//cdn.seqr.com/webshop-plugin/fonts/book/whitneybookprogkcy.svg#whitneybookprogkcy') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 #seqr-container {
   background: #f2f2f2;
   max-width: 500px;
-  font-family: "Whitney-Book";
+  font-family: "SEQR", Helvetica, Arial, sans-serif;
   overflow: auto;
 }
 #seqr-container .seqr-logo {
@@ -65,7 +65,7 @@
   margin: 7.5px 15px;
   border-radius: 5px;
   font-size: 19px;
-  font-family: "Whitney-Medium";
+  font-family: "SEQR-Medium", Helvetica, Arial, sans-serif;
 }
 #seqr-container .seqr-link a {
   color: #ffffff;
@@ -84,15 +84,15 @@
   padding: 15px 0;
   margin: 7.5px 15px;
   font-size: 19px;
-  font-family: "Whitney-Medium";
+  font-family: "SEQR-Medium";
 }
 #seqr-container .seqr-video {
   float: right;
   padding: 7.5px 15px;
 }
 #seqr-container .seqr-download {
-  width: 220px;
   float: right;
+  width: 220px;
   margin: 0;
   padding: 7.5px 15px;
   text-align: center;

@@ -190,16 +190,23 @@ if (!window.console) {
 
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
+        var protocolSuffix = getArg('mode', '').toUpperCase();
+        if (protocolSuffix != '') {
+            protocolSuffix = '-' + protocolSuffix;
+        }
 
         args['platform'] = platform;
         args['language'] = language;
         args['pollFreq'] = getIntArg('pollFreq', 500);
         args['SEQR_STATUS'] = 'INIT';
 
-        if (args.hasOwnProperty('invoiceReference')) {
+        if (args.hasOwnProperty('invoiceQRCode')) {
 
-            var injectCSS = function (template) {
-                var css = renderTemplate(template, args);
+            args['invoiceQRCode'] = getArg('invoiceQRCode', 'HTTP://SEQR.SE');
+            args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode').toUpperCase());
+            args['seqrLink'] = args['invoiceQRCode'].replace(/HTTP:\/\//g, "SEQR" + protocolSuffix + "://");
+
+            var injectCSS = function (css) {
                 var style = document.createElement('style');
                 style.type = 'text/css';
                 if (style.styleSheet) {
@@ -216,7 +223,7 @@ if (!window.console) {
 
             var injectTemplate = function (json) {
                 args['text'] = JSON.parse(json);
-                if (args.hasOwnProperty('invoiceReference')) {
+                if (args.hasOwnProperty('invoiceQRCode')) {
                     get(baseURL + '/templates/seqrShop.html', function (template) {
                         document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
                         intervalID = window.setInterval(pollInvoiceStatus, getArg('pollFreq'));

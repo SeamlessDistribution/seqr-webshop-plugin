@@ -4,7 +4,7 @@
 
     <div class="seqr-qrcode">
         <div class="seqr-images">
-            <img class="seqr-base-img" src="https://chart.googleapis.com/chart?chs=220x220&cht=qr&chld=L|0&chl=HTTP%3A%2F%2FSEQR.SE%2FR<%= invoiceReference %>&choe=UTF-8" width="220" height="220">
+            <img class="seqr-base-img" src="https://chart.googleapis.com/chart?chs=220x220&cht=qr&chld=L|0&chl=<%= seqrQRCode %>&choe=UTF-8" width="220" height="220">
             <img class="seqr-overlay-img seqr-overlay-canceled" src="<%= baseURL %>/images/canceled.svg" width="110" />
             <img class="seqr-overlay-img seqr-overlay-paid"src="<%= baseURL %>/images/paid.svg" width="110" />
         </div>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="seqr-link">
-        <a class="seqr-text-press" href="SEQR-DEMO://SEQR.SE/R<%= invoiceReference %>"><%= text.press %></a>
+        <a class="seqr-text-press" href="<%= seqrLink %>"><%= text.press %></a>
         <span class="seqr-text-canceled"><%= text.canceled %></span>
         <span class="seqr-text-paid"><%= text.paid %></span>
     </div>
