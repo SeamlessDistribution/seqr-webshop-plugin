@@ -105,14 +105,14 @@ And the response should be:
 Using the SOAP response from the send invoice call the following script tag should be embedded in the page:
 
 ```html
-<script
+<script id="seqrShop"
     src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#![PARAMETERS]">
 </script>
 ```
 
 ### Parameters
 
-__Important:__ Each parameter value has to be URI Encoded.
+__Important:__ The script tag must have and id attribute set to _seqrShop_. Each parameter value has to be URI Encoded.
 
 - `invoiceQRCode` - __Required__, This is the value returned from the send invoice SOAP call. Using the example above it would be: `HTTP://SEQR.SE/R1402562843463`.
 - `statusURL` - __Required__, This is URL that the plugin polls to check for payment status changed. Using the example above it would be: `https://example.com/seqr/status.php?invoiceReference=1402562843463`.
@@ -123,7 +123,7 @@ __Important:__ Each parameter value has to be URI Encoded.
 Here is complete example of the script tag with parameters properly URI encoded:
 
 ```html
-<script
+<script id="seqrShop"
     src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#!
     mode=demo&
     injectCSS=true&
