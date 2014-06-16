@@ -26,6 +26,8 @@
 @white: #ffffff;
 
 @block-padding: 15px;
+@base-font-size: 19px;
+@phi: 1.618;
 
 #seqr-container {
   background: @light-gray;
@@ -42,7 +44,7 @@
     padding: @block-padding;
     background: @seqr-green;
     color: @white;
-    font-size: 19px;
+    font-size: @base-font-size;
     .seqr-images {
       position: relative;
       width: 220px;
@@ -70,19 +72,25 @@
     }
   }
   .seqr-link {
+    position: relative;
     width: 220px;
+    height: 19px + 2*@block-padding;
+    line-height: @base-font-size + 2*@block-padding;
     float: left;
     text-align: center;
     background: @seqr-green;
     color: @white;
-    padding: @block-padding 0;
+    padding: 0;
     margin: @block-padding/2 @block-padding;
     border-radius: @block-padding/3;
-    font-size: 19px;
+    font-size: @base-font-size;
     font-family: "SEQR-Medium", Helvetica, Arial, sans-serif;
     a {
       color: @white;
       text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
     }
     .seqr-text-canceled {
       display: none;
@@ -114,7 +122,7 @@
       text-align: center;
       margin: 0px 10px;
       display: inline-block;
-      font-size: 12px;
+      font-size: round(@base-font-size/@phi);
       a {
         text-decoration: none;
         color: @dark-grey
