@@ -65,7 +65,7 @@ if (!window.console) {
         }
     }
 
-    function initHttpRequest(successCallback, errorCallback) {
+    function initHttpRequest(url, successCallback, errorCallback) {
         var xmlhttp;
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -84,7 +84,7 @@ if (!window.console) {
     }
 
     function get(url, successCallback, errorCallback) {
-        var xmlhttp = initHttpRequest(successCallback, errorCallback);
+        var xmlhttp = initHttpRequest(url, successCallback, errorCallback);
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
     }
