@@ -67,11 +67,17 @@ if (!window.console) {
 
     function initHttpRequest(url, successCallback, errorCallback) {
         var xmlhttp;
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
+        
+        if ("XMLHttpRequest" in window) {
+            if ("XDomainRequest" in window && navigator.appVersion.match(/MSIE [98]/)) {
+               xmlhttp = new XDomainRequest();  // IE7,8
+            } else {
+               xmlhttp = new XMLHttpRequest();
+            }
+        } else { // IE6
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 successCallback(xmlhttp.responseText);
