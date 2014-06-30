@@ -70,7 +70,15 @@ if (!window.console) {
         
         if ("XMLHttpRequest" in window) {
             if ("XDomainRequest" in window && navigator.appVersion.match(/MSIE [98]/)) {
-               xmlhttp = new XDomainRequest();  // IE7,8
+                xmlhttp = new XDomainRequest();  // IE8,9
+                xmlhttp.onload = function () {
+                    successCallback(xmlhttp.responseText);
+                }
+                xmlhttp.onerror = function() {
+                    errorCallback(url, xmlhttp.responseText);
+                }
+                return xmlhttp;
+
             } else {
                xmlhttp = new XMLHttpRequest();
             }
