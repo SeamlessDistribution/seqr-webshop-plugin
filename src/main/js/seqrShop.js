@@ -173,7 +173,7 @@ if (!window.console) {
 
     function updateStatus(data) {
         if (data.status && args['SEQR_STATUS'] != data.status) {
-            document.getElementById("seqr-container").classList.add('seqr-status-' + data.status.toLowerCase());
+            document.getElementById("seqr-container").className += ' seqr-status-' + data.status.toLowerCase();
             args['SEQR_STATUS'] = data.status;
             callDocumentCallback(data);
         }
