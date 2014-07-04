@@ -211,7 +211,7 @@ if (!window.console) {
 
         args['platform'] = platform;
         args['language'] = language;
-        args['pollFreq'] = getIntArg('pollFreq', 500);
+        args['pollFreq'] = getIntArg('pollFreq', 1000);
         args['SEQR_STATUS'] = 'INIT';
 
         if (args.hasOwnProperty('invoiceQRCode')) {
