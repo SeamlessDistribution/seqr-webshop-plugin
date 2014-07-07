@@ -116,6 +116,8 @@
 #seqr-container .seqr-download img {
   margin: 5px 0px;
   width: 20px;
+  height: 20px;
+  border: none;
 }
 @media screen and (max-width: 600px) {
   #seqr-container {
