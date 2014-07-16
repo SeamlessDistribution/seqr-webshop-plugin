@@ -67,11 +67,25 @@ if (!window.console) {
 
     function initHttpRequest(url, successCallback, errorCallback) {
         var xmlhttp;
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
+        
+        if ("XMLHttpRequest" in window) {
+            if ("XDomainRequest" in window && navigator.appVersion.match(/MSIE [98]/)) {
+                xmlhttp = new XDomainRequest();  // IE8,9
+                xmlhttp.onload = function () {
+                    successCallback(xmlhttp.responseText);
+                }
+                xmlhttp.onerror = function() {
+                    errorCallback(url, xmlhttp.responseText);
+                }
+                return xmlhttp;
+
+            } else {
+               xmlhttp = new XMLHttpRequest();
+            }
+        } else { // IE6
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 successCallback(xmlhttp.responseText);
@@ -159,7 +173,7 @@ if (!window.console) {
 
     function updateStatus(data) {
         if (data.status && args['SEQR_STATUS'] != data.status) {
-            document.getElementById("seqr-container").classList.add('seqr-status-' + data.status.toLowerCase());
+            document.getElementById("seqr-container").className += ' seqr-status-' + data.status.toLowerCase();
             args['SEQR_STATUS'] = data.status;
             callDocumentCallback(data);
         }
@@ -197,7 +211,7 @@ if (!window.console) {
 
         args['platform'] = platform;
         args['language'] = language;
-        args['pollFreq'] = getIntArg('pollFreq', 500);
+        args['pollFreq'] = getIntArg('pollFreq', 1000);
         args['SEQR_STATUS'] = 'INIT';
 
         if (args.hasOwnProperty('invoiceQRCode')) {
