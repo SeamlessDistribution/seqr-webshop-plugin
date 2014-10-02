@@ -116,7 +116,7 @@ if (!window.console) {
             }
         }
         var hashes = scriptURL.slice(scriptURL.indexOf('#!') + 2).split('&');
-        for (var i in hashes) {
+        for (var i = 0; hashes.length > i; i++) {
             var tuple = hashes[i].split('=');
             if (tuple.length == 2) {
                 args[tuple[0]] = decodeURIComponent(tuple[1]);
