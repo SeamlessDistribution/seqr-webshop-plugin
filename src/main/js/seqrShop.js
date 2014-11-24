@@ -12,12 +12,13 @@ if (!window.console) {
     };
 }
 
+window._seqr_interval_id = window._seqr_interval_id || null;
+
 (function () {
 
     var baseURL = "";
     var args = {};
     var cache = {};
-    var intervalID;
 
     var isMobile = {
         Android: function () {
@@ -185,12 +186,12 @@ if (!window.console) {
                 var data = JSON.parse(json);
                 updateStatus(data);
                 if (data.status != 'ISSUED') {
-                    window.clearInterval(intervalID);
+                    window.clearInterval(window._seqr_interval_id);
                 }
             }, function (url, status) {
                 if (status == 404) {
                     console.log(status + ' loading ' + url + ', giving up.');
-                    window.clearInterval(intervalID);
+                    window.clearInterval(window._seqr_interval_id);
                 } else {
                     console.log(status + ' loading ' + url + ', retrying.');
                 }
@@ -199,6 +200,8 @@ if (!window.console) {
     }
 
     function initialize() {
+
+        if (window._seqr_interval_id) window.clearInterval(window._seqr_interval_id);
 
         parseScriptArgs();
 
@@ -240,7 +243,7 @@ if (!window.console) {
                 if (args.hasOwnProperty('invoiceQRCode')) {
                     get(baseURL + '/templates/seqrShop.html', function (template) {
                         document.getElementById('seqrShop').outerHTML = renderTemplate(template, args);
-                        intervalID = window.setInterval(pollInvoiceStatus, getArg('pollFreq'));
+                        window._seqr_interval_id = window.setInterval(pollInvoiceStatus, getArg('pollFreq'));
                     });
                 }
             };
