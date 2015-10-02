@@ -116,7 +116,7 @@ if (!window.console) {
             }
         }
         var hashes = scriptURL.slice(scriptURL.indexOf('#!') + 2).split('&');
-        for (var i in hashes) {
+        for (var i = 0; hashes.length > i; i++) {
             var tuple = hashes[i].split('=');
             if (tuple.length == 2) {
                 args[tuple[0]] = decodeURIComponent(tuple[1]);
@@ -217,7 +217,7 @@ if (!window.console) {
         if (args.hasOwnProperty('invoiceQRCode')) {
 
             args['invoiceQRCode'] = getArg('invoiceQRCode', 'HTTP://SEQR.SE');
-            args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode').toUpperCase());
+            args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode');
             args['seqrLink'] = args['invoiceQRCode'].replace(/HTTP:\/\//g, "SEQR" + protocolSuffix + "://");
 
             var injectCSS = function (css) {
