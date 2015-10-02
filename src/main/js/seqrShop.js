@@ -217,7 +217,7 @@ if (!window.console) {
         if (args.hasOwnProperty('invoiceQRCode')) {
 
             args['invoiceQRCode'] = getArg('invoiceQRCode', 'HTTP://SEQR.SE');
-            args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode');
+            args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode'));
             args['seqrLink'] = args['invoiceQRCode'].replace(/HTTP:\/\//g, "SEQR" + protocolSuffix + "://");
 
             var injectCSS = function (css) {
