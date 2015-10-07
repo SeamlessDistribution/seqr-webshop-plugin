@@ -1,8 +1,6 @@
 /**
  * SEQR Plugin Injector
- * User: erik.hedenstrom@seamless.se
- * Date: 2014-06-10
- * Time: 16:11
+ * Version: 201406101611
  */
 
 if (!window.console) {
