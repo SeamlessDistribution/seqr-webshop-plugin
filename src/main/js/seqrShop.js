@@ -202,10 +202,6 @@ if (!window.console) {
 
         var platform = getArg('platform', detectPlatform());
         var language = getArg('language', detectBrowserLanguage());
-        var protocolSuffix = getArg('mode', '').toUpperCase();
-        if (protocolSuffix != '') {
-            protocolSuffix = '-' + protocolSuffix;
-        }
 
         args['platform'] = platform;
         args['language'] = language;
@@ -216,7 +212,7 @@ if (!window.console) {
 
             args['invoiceQRCode'] = getArg('invoiceQRCode', 'HTTP://SEQR.SE');
             args['seqrQRCode'] = encodeURIComponent(getArg('invoiceQRCode'));
-            args['seqrLink'] = args['invoiceQRCode'].replace(/HTTP:\/\//g, "SEQR" + protocolSuffix + "://");
+            args['seqrLink'] = args['invoiceQRCode'].replace(/HTTP:\/\//g, "SEQR://");
 
             var injectCSS = function (css) {
                 var style = document.createElement('style');
