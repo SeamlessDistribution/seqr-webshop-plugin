@@ -181,7 +181,11 @@ if (!window.console) {
         if (args.hasOwnProperty('statusURL')) {
             get(args['statusURL'], function (json) {
                 var data = JSON.parse(json);
+                
+                if (! data) return;
+                
                 updateStatus(data);
+                
                 if (data.status != 'ISSUED') {
                     window.clearInterval(intervalID);
                 }
