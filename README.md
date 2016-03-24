@@ -117,7 +117,6 @@ __Important:__ The script tag must have and id attribute set to _seqrShop_. Each
 - `invoiceQRCode` - __Required__, This is the value returned from the send invoice SOAP call. Using the example above it would be: `HTTP://SEQR.SE/R1402562843463`.
 - `statusURL` - __Required__, This is URL that the plugin polls to check for payment status changed. Using the example above it would be: `https://example.com/seqr/status.php?invoiceReference=1402562843463`.
 - `statusCallback` - __Optional__, This is the name of a global javascript function that will get called whenever the payment status changes. The data passed to the function is the JSON response from the statusURL. This callback can be used to send the user to a specific page upon payment completion, or to provide direct feedback in the current page. Our sample shop uses this callback to provide a status overlay over the QR code.
-- `mode` - __Optional__, When using the demo SEQR app, you must set mode=demo. In production remove this parameter.
 - `injectCSS` - __Optional__, If you use the required stylesheet directly in the page using `<link rel="stylesheet" type="text/css" href="//cdn.seqr.com/webshop-plugin/css/seqrShop.css">` then you can prevent the plugin from injecting the CSS byt setting this value to false.
 
 Here is complete example of the script tag with parameters properly URI encoded:
@@ -125,7 +124,6 @@ Here is complete example of the script tag with parameters properly URI encoded:
 ```html
 <script id="seqrShop"
     src="https://cdn.seqr.com/webshop-plugin/js/seqrShop.js#!
-    mode=demo&
     injectCSS=true&
     statusCallback=statusUpdated&
     invoiceQRCode=HTTP%3A%2F%2FSEQR.SE%2FR1402562843463&
