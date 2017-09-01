@@ -139,7 +139,7 @@ Details about integration [webshop integration with SEQR](http://developer.seqr.
 
 ## Examples
 
-Visit [https://devapi.seqr.com/seqr-webshop-sample/](https://devapi.seqr.com/seqr-webshop-sample/) to try the sample webshop.
+Visit [https://extdev.seqr.com/seqr-webshop-sample](https://extdev.seqr.com/seqr-webshop-sample) to try the sample webshop.
 
 The source code for sample webshop can be found at [https://github.com/SeamlessDistribution/seqr-webshop-sample](https://github.com/SeamlessDistribution/seqr-webshop-sample).
 
